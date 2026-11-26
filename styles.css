@@ -291,9 +291,9 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 .process__head { position: sticky; top: 120px; display: grid; gap: 26px; }
 .process__head p:not(.label) { color: var(--bone-2); max-width: 380px; }
 .steps { list-style: none; margin: 0; padding: 0; }
-.step { display: grid; grid-template-columns: 70px 1fr; gap: 20px; padding: 34px 0; border-top: 1px solid var(--line); }
-.step:last-child { border-bottom: 1px solid var(--line); }
-.step__n { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red); padding-top: 12px; }
+.step { --pt: 34px; --mk: 34px; --mo: 4px; --col: 70px; position: relative; display: grid; grid-template-columns: var(--col) 1fr; gap: 20px; padding: var(--pt) 0; }
+
+.step__n { position: relative; z-index: 1; display: grid; place-items: center; width: var(--mk); height: var(--mk); margin-top: var(--mo); border-radius: 3px; background: var(--ink-2); box-shadow: inset 0 0 0 1px rgba(236,230,218,.22); font: var(--ui); letter-spacing: 0; color: var(--bone-2); transition: background .6s var(--ease), color .6s var(--ease), box-shadow .6s var(--ease); }
 .step h3 { margin: 0 0 10px; font-weight: 400; font-size: clamp(26px, 2.4vw, 38px); letter-spacing: -.01em; line-height: 1.1; }
 .step p { color: var(--bone-2); max-width: 520px; }
 
@@ -316,7 +316,8 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 .faq__list summary i { position: relative; width: 14px; height: 14px; flex: none; }
 .faq__list summary i::before, .faq__list summary i::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--bone); transition: transform .5s var(--ease); }
 .faq__list summary i::after { transform: rotate(90deg); }
-.faq__list details[open] summary i::after { transform: rotate(0); }
+.faq__list details.is-open summary i::after { transform: rotate(0); }
+.faq__list details { overflow: hidden; }
 .faq__list details p { padding: 0 0 30px; color: var(--bone-2); max-width: 620px; }
 
 /* ---------- contact ---------- */
@@ -438,7 +439,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
   .advocacy__copy { order: 0; }
   .process, .faq { padding: 90px 0; }
   .process__head { position: static; }
-  .step { grid-template-columns: 44px 1fr; padding: 26px 0; }
+  .step { --pt: 26px; --mk: 30px; --mo: 0px; --col: 44px; padding: var(--pt) 0; }
   .stories__bg img { object-position: 82% 50%; }
   .stories__shade { background: linear-gradient(0deg, rgba(10,9,8,.92) 0%, rgba(10,9,8,.8) 55%, rgba(10,9,8,.5) 100%), linear-gradient(180deg, var(--ink) 0%, rgba(10,9,8,0) 14%); }
   .stories__in { padding-top: 90px; padding-bottom: 100px; gap: 40px; }
@@ -664,4 +665,16 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
 .hero__bg picture, .hero__reveal picture, .fee__bg picture, .advocacy__art picture, .ft__art picture, .chip picture { display: contents; }
 /* sections far below the fold skip layout and paint until they come near */
 .process, .advocacy, .t1, .faq, .contact, .locations { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+
+/* ---------- what happens when you call: progress line ---------- */
+/* hairline between steps, starting after the marker column */
+.step::after { content: ""; position: absolute; top: 0; left: calc(var(--col) + 20px); right: 0; height: 1px; background: var(--line); }
+.steps { position: relative; }
+.steps::after { content: ""; position: absolute; bottom: 0; left: calc(70px + 20px); right: 0; height: 1px; background: var(--line); }
+/* the line from this marker down to the next one, with a red fill driven by scroll (--f: 0..1) */
+.step:not(:last-child)::before { content: ""; position: absolute; left: calc(var(--mk) / 2 - .5px); top: calc(var(--pt) + var(--mo) + var(--mk) / 2); height: 100%; width: 1px; background: linear-gradient(var(--red), var(--red)) top / 100% calc(var(--f, 0) * 100%) no-repeat, rgba(236,230,218,.18); }
+.step.is-on .step__n { background: var(--red); color: #fff; box-shadow: inset 0 0 0 1px var(--red); }
+@media (max-width: 760px) {
+  .steps::after { left: calc(44px + 20px); }
+}
 

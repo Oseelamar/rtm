@@ -45,6 +45,39 @@
     document.addEventListener('rtm:lang', fill);
   }
 
+  /* ---------- FAQ: answers slide down smoothly, one open at a time ---------- */
+  const faqs = $$('.faq__list details');
+  const FAQ_EASE = 'cubic-bezier(.22,.8,.24,1)', FAQ_MS = 560;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  faqs.forEach(d => { if (d.open) d.classList.add('is-open'); });
+  function faqClose(d) {
+    if (!d.open) return;
+    d.classList.remove('is-open');
+    if (still) { d.open = false; return; }
+    const sum = d.querySelector('summary');
+    if (d._anim) d._anim.cancel();
+    d._anim = d.animate({ height: [d.offsetHeight + 'px', sum.offsetHeight + 'px'] }, { duration: FAQ_MS * .85, easing: FAQ_EASE });
+    d._anim.onfinish = () => { d.open = false; d._anim = null; };
+  }
+  function faqOpen(d) {
+    d.classList.add('is-open');
+    if (still) { d.open = true; return; }
+    const sum = d.querySelector('summary'), ans = d.querySelector('p');
+    const from = d._anim ? d.offsetHeight : sum.offsetHeight;
+    if (d._anim) d._anim.cancel();
+    d.open = true;
+    const to = sum.offsetHeight + ans.offsetHeight;
+    d._anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: FAQ_MS, easing: FAQ_EASE });
+    ans.animate({ opacity: [0, 1], transform: ['translateY(-10px)', 'none'] }, { duration: FAQ_MS, easing: FAQ_EASE });
+    d._anim.onfinish = () => { d._anim = null; };
+  }
+  faqs.forEach(d => d.querySelector('summary').addEventListener('click', e => {
+    e.preventDefault();
+    if (d.classList.contains('is-open')) { faqClose(d); return; }
+    faqs.forEach(o => { if (o !== d) faqClose(o); });
+    faqOpen(d);
+  }));
+
   /* ---------- split headings into masked lines ---------- */
   const splitEls = $$('.split');
   splitEls.forEach(el => { el.dataset.src = el.textContent.trim(); });
@@ -175,6 +208,22 @@
     track.style.transform = `translate3d(${-max * ease(p)}px,0,0)`;
   }
 
+  /* ---------- what happens when you call: the line fills as you read down ---------- */
+  const steps = $$('.step');
+  let stepsNear = false;
+  if (steps.length) new IntersectionObserver(([e]) => { stepsNear = e.isIntersecting; }, { rootMargin: '20% 0px 20% 0px' }).observe($('.steps'));
+  function stepsTick(vh) {
+    if (!stepsNear) return;
+    const line = vh * 0.58; // the point on screen the progress follows
+    steps.forEach(st => {
+      const r = st.getBoundingClientRect();
+      const mk = st.querySelector('.step__n').getBoundingClientRect();
+      const c = mk.top + mk.height / 2;
+      st.classList.toggle('is-on', line >= c);
+      st.style.setProperty('--f', clamp((line - c) / r.height).toFixed(3));
+    });
+  }
+
   /* ---------- header + dock ---------- */
   const hd = $('.hd');
   let lastY = 0;
@@ -196,6 +245,7 @@
     heroTick(y, vh, vw);
     peopleTick(y, vh, vw);
     chromeTick(y, vh);
+    stepsTick(vh);
     requestAnimationFrame(frame);
   }
 
@@ -203,10 +253,12 @@
   addEventListener('resize', () => {
     clearTimeout(rz);
     rz = setTimeout(() => {
+      // Phones fire resize when the address bar hides or shows: only re-split headings when the width
+      // really changed, and never force-reveal them, so each one still rises in when it is reached.
+      const widthChanged = innerWidth !== vw;
       vh = innerHeight; vw = innerWidth;
       measureChip();
-      doSplit();
-      $$('.split').forEach(el => el.classList.add('is-in'));
+      if (widthChanged) doSplit();
       if (mqPhone.matches) { track.style.transform = ''; }
     }, 150);
   });
