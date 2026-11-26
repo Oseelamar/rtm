@@ -7,7 +7,25 @@
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
   }), { rootMargin: '0px 0px -10% 0px', threshold: .01 });
-  $$('.rv, [data-bars]').forEach(n => FLAT ? n.classList.add('is-in') : io.observe(n));
+  $$('.rv, [data-bars], .pw__row').forEach(n => FLAT ? n.classList.add('is-in') : io.observe(n));
+
+  /* practice 03: pointing at an area fills the detail panel */
+  const p3 = $('[data-p3]');
+  if (p3) {
+    const btns = $$('.p3__list button', p3);
+    const t = $('[data-t]', p3), d = $('[data-desc]', p3), n = $('[data-n]', p3);
+    const show = b => {
+      if (b.classList.contains('is-on')) return;
+      btns.forEach(x => x.classList.toggle('is-on', x === b));
+      t.textContent = b.textContent; d.textContent = b.dataset.d;
+      n.textContent = String(btns.indexOf(b) + 1).padStart(2, '0') + ' / ' + btns.length;
+      [t, d].forEach(el => { el.classList.remove('is-swap'); void el.offsetWidth; el.classList.add('is-swap'); });
+    };
+    btns.forEach(b => {
+      b.addEventListener('click', () => show(b));
+      b.addEventListener('mouseenter', () => { if (matchMedia('(hover: hover)').matches) show(b); });
+    });
+  }
 
   /* results 04: the figure changes digit by digit */
   const r4 = $('[data-r4]');

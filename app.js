@@ -37,6 +37,12 @@
     el.innerHTML = lines.map(l => `<span class="hl"><span class="hl__i">${l.join(' ')}</span></span>`).join('');
   }
   const doSplit = () => splitEls.forEach(splitLines);
+  // language switch (i18n.js): re-split the translated headings and re-measure the hero chip
+  document.addEventListener('rtm:lang', () => {
+    if (!document.body.classList.contains('is-ready')) return;
+    doSplit();
+    requestAnimationFrame(() => { if (typeof measureChip === 'function') measureChip(); });
+  });
 
   /* ---------- reveal on view ---------- */
   const io = new IntersectionObserver(entries => {

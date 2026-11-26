@@ -180,7 +180,7 @@ body.is-ready .hero__bg img { transform: scale(1); }
 .hero__title .hl[data-l="2"] .hl__i { transition-delay: .2s; }
 .hl--split .hl__i { display: flex; align-items: center; gap: .22em; }
 .w-left, .w-right { display: inline-block; will-change: transform; }
-.chip {
+.chip { flex: none;
   display: inline-block; position: relative;
   width: 1.9em; height: .74em;
   border-radius: .1em; overflow: hidden;
@@ -545,4 +545,14 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
   .gcards::-webkit-scrollbar { display: none; }
   .gcards::after { content: ""; flex: 0 0 1px; }
   .gcard { flex: 0 0 82vw; scroll-snap-align: start; }
+}
+
+/* ---------- Spanish ---------- */
+.tr-note { margin-top: 22px; }
+html:not([lang="es"]) .tr-note { display: none; }
+html[lang="es"] .hero__title { font-size: clamp(46px, 6.6vw, 120px); }
+html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
+@media (max-width: 760px) {
+  html[lang="es"] .hero__title { font-size: clamp(36px, 10vw, 52px); }
+  html[lang="es"] .pw__row a { font-size: clamp(30px, 9.2vw, 48px); }
 }

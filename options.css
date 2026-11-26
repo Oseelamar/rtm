@@ -237,3 +237,103 @@
 
   .opts__end { padding-bottom: 110px; }
 }
+
+/* =========================================================
+   PRACTICE 01 — the index
+   ========================================================= */
+.p1, .p4 { padding: 90px 0 130px; }
+.p1__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px 60px; margin-bottom: 56px; flex-wrap: wrap; }
+.p1__head .h2 { margin-top: 24px; max-width: 760px; }
+.p1__lede { color: var(--bone-2); max-width: 380px; }
+.idx { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(236,230,218,.3); }
+.idx a { position: relative; display: grid; grid-template-columns: 90px minmax(0, 1.1fr) minmax(0, 1fr) 40px; align-items: center; gap: 24px; padding: 30px 0; border-bottom: 1px solid var(--line); transition: padding .6s var(--ease), background .6s var(--ease); }
+.idx a::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--red); transition: width .9s var(--ease); }
+.idx a:hover { padding-left: 18px; padding-right: 18px; background: var(--ink-2); }
+.idx a:hover::before { width: 100%; }
+.idx__n { font: var(--ui); letter-spacing: var(--ui-track); color: var(--red); }
+.idx__t { font: 400 clamp(32px, 3.4vw, 58px)/1.02 var(--serif); letter-spacing: -.025em; }
+.idx__d { color: var(--grey); font-size: 15.5px; max-width: 420px; transition: color .5s; }
+.idx a:hover .idx__d { color: var(--bone-2); }
+.idx__a { justify-self: end; font-size: 22px; opacity: .35; transition: opacity .5s, transform .6s var(--ease); }
+.idx a:hover .idx__a { opacity: 1; transform: translateX(4px); }
+.idx__also { display: grid; grid-template-columns: 90px 1fr; gap: 24px; padding-top: 34px; }
+.idx__also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px 24px; }
+.idx__also a { font: 400 22px/1.2 var(--serif); letter-spacing: -.01em; color: var(--bone-2); transition: color .4s; }
+.idx__also a:hover { color: var(--bone); }
+
+/* =========================================================
+   PRACTICE 02 — stacked words, no pictures
+   ========================================================= */
+.p2 { padding: 110px 0 130px; }
+.p2 > .wrap > .label { margin-bottom: 50px; }
+.stk { list-style: none; margin: 0; padding: 0; display: grid; justify-items: center; text-align: center; }
+.stk a { position: relative; display: inline-flex; align-items: flex-start; gap: .12em; font: 400 clamp(46px, 7.6vw, 136px)/1.02 var(--serif); letter-spacing: -.03em; }
+.stk sup { font: var(--ui); letter-spacing: var(--ui-track); color: var(--red); margin-top: 1.1em; min-width: 2.4em; text-align: right; }
+.stk a::after { content: ""; position: absolute; left: 2.6em; right: 0; bottom: .06em; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease); }
+.stk:hover .pw__w { color: rgba(236,230,218,.3); }
+.stk a:hover .pw__w { color: var(--bone); }
+.stk a:hover::after { transform: scaleX(1); }
+.stk__also { max-width: 640px; margin: 70px auto 0; text-align: center; color: var(--bone-2); font: 400 clamp(20px, 1.7vw, 26px)/1.4 var(--serif); }
+
+/* =========================================================
+   PRACTICE 03 — list with a detail panel
+   ========================================================= */
+.p3 { padding: 90px 0 130px; background: var(--ink-2); }
+.p3__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(40px, 7vw, 130px); align-items: start; }
+.p3__h { margin: 24px 0 40px; }
+.p3__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.p3__list button { width: 100%; text-align: left; padding: 15px 0; border-bottom: 1px solid var(--line); font: 400 clamp(22px, 1.9vw, 30px)/1.15 var(--serif); letter-spacing: -.01em; color: var(--grey); transition: color .4s var(--ease), padding .5s var(--ease), box-shadow .5s var(--ease); }
+.p3__list button:hover, .p3__list button.is-on { color: var(--bone); }
+.p3__list button.is-on { padding-left: 16px; box-shadow: inset 2px 0 0 var(--red); }
+.p3__panel { position: sticky; top: 110px; display: grid; gap: 22px; padding: 44px; background: var(--ink); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+.p3__count { font: var(--ui); letter-spacing: var(--ui-track); color: var(--red); }
+.p3__name { margin: 0; font: 400 clamp(40px, 3.8vw, 66px)/1 var(--serif); letter-spacing: -.025em; }
+.p3__desc { color: var(--bone-2); font-size: 17px; line-height: 1.6; max-width: 480px; min-height: 4.8em; }
+.p3__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.p3__panel .is-swap { animation: swap .7s var(--ease); }
+@keyframes swap { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* =========================================================
+   PRACTICE 04 — plates
+   ========================================================= */
+.plates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.plate { position: relative; display: grid; align-content: space-between; gap: 40px; min-height: 300px; padding: 34px 34px 38px; background: var(--ink); transition: background .6s var(--ease); }
+.plate::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease); }
+.plate:hover { background: #121316; }
+.plate:hover::before { transform: scaleX(1); }
+.plate__n { font: 400 30px/1 var(--serif); color: var(--red); letter-spacing: .02em; }
+.plate__t { font: 400 clamp(32px, 2.8vw, 48px)/1.02 var(--serif); letter-spacing: -.02em; display: block; }
+.plate__d { color: var(--grey); font-size: 15px; max-width: 320px; margin-top: -24px; }
+.plates:not(.plates--sm) .plate:nth-child(3n+2) { transition-delay: .06s; }
+.plates--sm { grid-template-columns: repeat(4, 1fr); border-top: 0; }
+.plates--sm .plate { min-height: 0; padding: 26px 28px; }
+.plates--sm .plate__t { font-size: clamp(20px, 1.6vw, 26px); }
+
+@media (max-width: 760px) {
+  .p1, .p2, .p3, .p4 { padding: 60px 0 90px; }
+  .p1__head { margin-bottom: 36px; }
+  .idx a { grid-template-columns: 34px 1fr 20px; gap: 6px 14px; padding: 22px 0; }
+  .idx a:hover { padding-left: 0; padding-right: 0; background: none; }
+  .idx__t { font-size: 30px; grid-column: 2; }
+  .idx__d { grid-column: 2; grid-row: 2; font-size: 14px; }
+  .idx__a { grid-column: 3; grid-row: 1; }
+  .idx__n { grid-row: 1; padding-top: 6px; align-self: start; }
+  .idx__also { grid-template-columns: 1fr; gap: 16px; }
+  .idx__also ul { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .idx__also a { font-size: 18px; }
+  .stk a { font-size: clamp(34px, 10.4vw, 52px); }
+  .stk sup { margin-top: .8em; min-width: 2em; font-size: 10px; }
+  .stk a::after { left: 2.2em; }
+  .stk__also { font-size: 19px; margin-top: 44px; }
+  .p3__grid { grid-template-columns: 1fr; }
+  .p3__h { margin-bottom: 26px; }
+  .p3__panel { position: sticky; top: 10px; z-index: 2; order: -1; padding: 22px 20px; gap: 12px; }
+  .p3__name { font-size: 34px; }
+  .p3__desc { font-size: 15px; min-height: 0; }
+  .p3__ctas .btn--line { display: none; }
+  .plates { grid-template-columns: 1fr; }
+  .plate { min-height: 0; gap: 28px; padding: 26px 22px 28px; }
+  .plates--sm { grid-template-columns: 1fr 1fr; }
+  .plates--sm .plate { padding: 20px 18px; }
+  .plates--sm .plate__t { font-size: 19px; }
+}
