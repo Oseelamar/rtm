@@ -1,0 +1,15 @@
+# Cloudflare Pages response headers (GitHub Pages ignores this file).
+# Paintings, fonts and the vendored script rarely change: let browsers keep them for a week.
+# HTML, CSS and app scripts keep Cloudflare's default (always revalidate) so edits show at once.
+
+/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/fonts/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/vendor/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*
+  X-Robots-Tag: noindex
