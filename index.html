@@ -44,12 +44,12 @@
 <div class="menu" aria-hidden="true">
   <div class="menu__inner">
     <nav class="menu__nav">
-      <a href="#practice"><span>01</span>Practice areas</a>
-      <a href="#people"><span>02</span>Our people</a>
-      <a href="#results"><span>03</span>Results</a>
-      <a href="#process"><span>04</span>What to expect</a>
-      <a href="#locations"><span>05</span>Locations</a>
-      <a href="#contact"><span>06</span>Free case review</a>
+      <a href="#practice" style="--i:0"><span class="m-i"><span>01</span>Practice areas</span></a>
+      <a href="#people" style="--i:1"><span class="m-i"><span>02</span>Our people</span></a>
+      <a href="#results" style="--i:2"><span class="m-i"><span>03</span>Results</span></a>
+      <a href="#process" style="--i:3"><span class="m-i"><span>04</span>What to expect</span></a>
+      <a href="#locations" style="--i:4"><span class="m-i"><span>05</span>Locations</span></a>
+      <a href="#contact" style="--i:5"><span class="m-i"><span>06</span>Free case review</span></a>
     </nav>
     <div class="menu__side">
       <p class="label">Available 24/7</p>
@@ -95,7 +95,7 @@
 
     <!-- The chip grows into this full-screen frame -->
     <div class="hero__reveal" data-reveal>
-      <picture><source type="image/avif" srcset="img/opt/face-768.avif 768w, img/opt/face-1536.avif 1536w" sizes="100vw"><img src="img/opt/face-1536.jpg" width="1536" height="864" loading="lazy" decoding="async" alt="Close-up of the blindfolded face of Lady Justice"></picture>
+      <picture><source type="image/avif" srcset="img/opt/face-768.avif 768w, img/opt/face-1088.avif 1088w, img/opt/face-1536.avif 1536w" sizes="100vw"><img src="img/opt/face-1536.jpg" width="1536" height="864" fetchpriority="low" decoding="async" alt="Close-up of the blindfolded face of Lady Justice"></picture>
       <div class="hero__reveal-copy">
         <p class="label">Our promise</p>
         <p class="hero__reveal-title"><span class="hl"><span class="hl__i">You’re not just</span></span><span class="hl"><span class="hl__i">a case to us.</span></span></p>
@@ -154,7 +154,7 @@
     <div class="people__track" data-track>
       <article class="person person--lead">
         <div class="person__frame">
-          <img class="person__photo" src="img/p-ramin.webp" alt="Ramin T. Montakab" loading="lazy">
+          <img class="person__photo" src="img/p-ramin.webp" fetchpriority="low" decoding="async" alt="Ramin T. Montakab">
         </div>
         <div class="person__cap">
           <h3>Ramin T. Montakab</h3>
@@ -164,25 +164,25 @@
       </article>
       <article class="person">
         <div class="person__frame">
-          <img class="person__photo" src="img/p-sarah.webp" alt="Sarah Beydoun" loading="lazy">
+          <img class="person__photo" src="img/p-sarah.webp" fetchpriority="low" decoding="async" alt="Sarah Beydoun">
         </div>
         <div class="person__cap"><h3>Sarah Beydoun</h3><p data-es="Abogada asociada">Associate Attorney</p></div>
       </article>
       <article class="person">
         <div class="person__frame">
-          <img class="person__photo" src="img/p-jackson.webp" alt="Jackson Hogan" loading="lazy">
+          <img class="person__photo" src="img/p-jackson.webp" fetchpriority="low" decoding="async" alt="Jackson Hogan">
         </div>
         <div class="person__cap"><h3>Jackson Hogan</h3><p>Associate Attorney</p></div>
       </article>
       <article class="person">
         <div class="person__frame">
-          <img class="person__photo" src="img/p-leona.webp" alt="Leona Smialek" loading="lazy">
+          <img class="person__photo" src="img/p-leona.webp" fetchpriority="low" decoding="async" alt="Leona Smialek">
         </div>
         <div class="person__cap"><h3>Leona Smialek</h3><p>Legal Assistant</p></div>
       </article>
       <article class="person">
         <div class="person__frame">
-          <img class="person__photo" src="img/p-emmasara.webp" alt="EmmaSara Santana" loading="lazy">
+          <img class="person__photo" src="img/p-emmasara.webp" fetchpriority="low" decoding="async" alt="EmmaSara Santana">
         </div>
         <div class="person__cap"><h3>EmmaSara Santana</h3><p>Office Manager</p></div>
       </article>
@@ -257,7 +257,7 @@
 <!-- ============ NO FEE (full-bleed painting, cards over its edge) ============ -->
 <section class="fee">
   <div class="fee__stage">
-    <div class="fee__bg"><picture><source type="image/avif" srcset="img/opt/fee-bg-960.avif 960w, img/opt/fee-bg-1536.avif 1536w" sizes="100vw"><img src="img/opt/fee-bg-1536.jpg" width="1536" height="864" loading="lazy" decoding="async" alt="A marble hand holding gilded balance scales"></picture></div>
+    <div class="fee__bg"><picture><source type="image/avif" srcset="img/opt/fee-bg-960.avif 960w, img/opt/fee-bg-1536.avif 1536w" sizes="100vw"><img src="img/opt/fee-bg-1536.jpg" width="1536" height="864" fetchpriority="low" decoding="async" alt="A marble hand holding gilded balance scales"></picture></div>
     <div class="fee__shade"></div>
     <div class="wrap fee__in">
       <div class="fee__copy">
@@ -305,7 +305,7 @@
 <!-- ============ ADVOCACY ============ -->
 <section class="advocacy">
   <div class="wrap advocacy__grid">
-    <div class="advocacy__art rv-img"><picture><source type="image/avif" srcset="img/opt/hands-800.avif 800w, img/opt/hands-1216.avif 1216w" sizes="(max-width: 760px) 100vw, 45vw"><img src="img/opt/hands-1216.jpg" width="1216" height="684" loading="lazy" decoding="async" alt="Two marble hands clasped in support"></picture></div>
+    <div class="advocacy__art rv-img"><picture><source type="image/avif" srcset="img/opt/hands-800.avif 800w, img/opt/hands-1216.avif 1216w" sizes="(max-width: 760px) 100vw, 45vw"><img src="img/opt/hands-1216.jpg" width="1216" height="684" fetchpriority="low" decoding="async" alt="Two marble hands clasped in support"></picture></div>
     <div class="advocacy__copy">
       <p class="label rv"><span class="rule"></span>Neurodivergent advocacy</p>
       <h2 class="h2 split">Injury lawyers for people with autism and special needs.</h2>

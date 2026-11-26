@@ -164,7 +164,7 @@ body.menu-open .hd__menu i:last-child { transform: translateY(-3px) rotate(-45de
 body.menu-open .menu { clip-path: inset(0 0 0 0); visibility: visible; }
 .menu__inner { height: 100%; display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--pad); padding: 120px var(--pad) 48px; align-items: end; }
 .menu__nav a { display: flex; align-items: baseline; gap: 18px; font-size: clamp(34px, 5vw, 76px); line-height: 1.12; letter-spacing: -.02em; color: var(--bone); transition: color .4s; }
-.menu__nav a span { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red); }
+.menu__nav .m-i > span { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red); }
 .menu__nav a:hover { color: var(--grey); }
 .menu__side { display: grid; gap: 14px; padding-bottom: 10px; }
 .menu__phone { font-size: clamp(30px, 3vw, 48px); letter-spacing: -.01em; }
@@ -216,7 +216,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 
 /* ---------- proof ---------- */
 .proof { padding: 130px 0 110px; border-bottom: 1px solid var(--line); }
-.proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .proof__item { padding: 34px 28px 0 0; }
 .proof__item + .proof__item { padding-left: 28px; border-left: 1px solid var(--line); }
 .proof__big { font-size: clamp(36px, 3.6vw, 62px); line-height: 1; letter-spacing: -.02em; }
@@ -303,7 +303,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 .advocacy__copy { order: -1; display: grid; gap: 26px; max-width: 600px; }
 .advocacy__copy p:not(.label) { color: var(--bone-2); }
 .advocacy__copy .btn { justify-self: start; }
-.advocacy__art img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.advocacy__art img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
 
 /* ---------- faq ---------- */
 .faq { padding: 130px 0; background: var(--ink-2); }
@@ -676,5 +676,36 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
 .step.is-on .step__n { background: var(--red); color: #fff; box-shadow: inset 0 0 0 1px var(--red); }
 @media (max-width: 760px) {
   .steps::after { left: calc(44px + 20px); }
+}
+
+/* ---------- instant blurred previews behind paintings that load a beat later ---------- */
+.hero__reveal { background: #0a0908 url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKADAAQAAAABAAAAGwAAAAD/wAARCAAbADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9sAQwAHBwcHBwcMBwcMEQwMDBEXERERERceFxcXFxceJB4eHh4eHiQkJCQkJCQkKysrKysrMjIyMjI4ODg4ODg4ODg4/9sAQwEJCQkODQ4ZDQ0ZOyghKDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7/90ABAAD/9oADAMBAAIRAxEAPwDirfWzqMSQTnODjntmpVso5yJRz5h2IAMkKTgf4mvN7e4MUgOcc12ejaxcRtGInCSKCqs38PUHp9a5YUvZpuB0Tnz2Uj0C20nRbQi0tbb7fdjIkbjaDk8Z5UY9P1Nc14r0pLSETSrCsmAGSJcYz3LcZ6dMCtnw7NeO8jXbnyLNVdkiODufJ+bb971POKzfFOuWM0DC3ZZPtDASZzuAXnp2571hTcnNa6ms1FRZ5bdQhOfw/Csw8Eitu8lWROOpP86xGOWLepr0ZbnGj//Q+fM4bCjNb9vcOPLkhURSZxvIBXP8waxIx94+xpyu68A8NjI9awkrnfSstz6A0OxNto0t3ZzJdPNtyYxgArgBcdfevO9b8LX0d5LKowg6nOTn1AHPWuVttQvdNnaSwmeFgOqnH5+te06VdT32hJdXTeZKzEFiBzj6VyWlTd0y5wTR4TfWOo6fj7dC8W77u4YrLzmvVfGrtLCBIdwC559a8qFdtOfMrs4Zx5XY/9k=") 50% 40% / cover no-repeat; }
+.fee__bg { background: #0a1030 url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKADAAQAAAABAAAAGwAAAAD/wAARCAAbADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9sAQwAHBwcHBwcMBwcMEQwMDBEXERERERceFxcXFxceJB4eHh4eHiQkJCQkJCQkKysrKysrMjIyMjI4ODg4ODg4ODg4/9sAQwEJCQkODQ4ZDQ0ZOyghKDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7/90ABAAD/9oADAMBAAIRAxEAPwD59yCKcoycVCDipVNdsDnki7HjIBrX02S2ivoZbiIXCqeYjwCcYX8jg1hRvg5q/HcSQ7WRyhHPBxWk3pZERVndnWw2cfi15hZwRW13DHuVU+USY7EdMn1GOetcZdQ3MEzWk0TRyJwysMEfXNXbTVLzTrlL+2kIkQ5GT1Hoa3fEHiiHXrZZJUCXUZxnH8OOR+dcNScqa5d0dlGnGpJNux//0PnYGng0yitozIcSdWxVyS7Z4RDsQYOSwX5j9TWcOtSoMyKDTlJbvoEItuy6l9ZZmtinlJtY48wrluOwP+FMKJGgd1OT0J/oKSVmUKqkgEcjNHW5IPRQQPbArhlNy1PVp0ow0W5//9k=") 62% 40% / cover no-repeat; }
+.advocacy__art { background: #0a0908 url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKADAAQAAAABAAAAGwAAAAD/wAARCAAbADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9sAQwAHBwcHBwcMBwcMEQwMDBEXERERERceFxcXFxceJB4eHh4eHiQkJCQkJCQkKysrKysrMjIyMjI4ODg4ODg4ODg4/9sAQwEJCQkODQ4ZDQ0ZOyghKDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7/90ABAAD/9oADAMBAAIRAxEAPwDxiPUZFQpuOKoTuGORxVMMaUtkVgoJO6NnO6GNUdOJzToIJbq4jtbdd0krBFUdyTgCtDMjVHlcRxKWZuAAMkn6V6nqf2fQtDt9LkQCYqDNGCcg9cE55Oeo6VuxaDH4X06SES7bjGGMe0ySE/eOeSqjoAPqeteT6hdST3HmF8qg2AHqcd65nJVHZbI6IwcUf//Q+d80E04gU3HWpLsJmuu8IXVjpV7Jq9+2GgjPkrjOXbjP4DNcooGRUkhJwPbNRNXXKaU0l7zNq+1u/u5prqWVsSsenGAaxHCjgDPvTpeI8D2qHqOaUYpbFyfQ/9k=") 80% 50% / cover no-repeat; }
+
+/* ---------- phone menu: room between links, lines rise in from a mask ---------- */
+.menu__nav a { overflow: hidden; }
+.menu__nav .m-i { display: flex; align-items: baseline; gap: 18px; transform: translateY(110%); transition: transform .35s var(--ease); }
+body.menu-open .menu__nav .m-i { transform: none; transition: transform 1s var(--ease) calc(.18s + var(--i, 0) * .07s); }
+.menu__side { opacity: 0; transform: translateY(18px); transition: opacity .3s var(--ease), transform .3s var(--ease); }
+body.menu-open .menu__side { opacity: 1; transform: none; transition: opacity .9s var(--ease) .55s, transform 1s var(--ease) .55s; }
+
+@media (max-width: 760px) {
+  .menu__nav { display: grid; gap: 14px; }
+  .menu__nav a { padding: 4px 0 6px; line-height: 1.1; }
+  .menu__side { margin-top: 26px; gap: 12px; }
+
+  /* 2. autism section: text and photo in one screen, photo edge to edge, edges melting into the page */
+  .advocacy { padding: 64px 0 56px; }
+  .advocacy__grid { gap: 30px; }
+  .advocacy__copy { gap: 20px; }
+  .advocacy__art { margin: 0 -20px; border-radius: 0; }
+  .advocacy__art img { aspect-ratio: 16 / 9; border-radius: 0; object-position: 78% 50%; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%); }
+  .advocacy__art { background: none; }
+
+  /* 3. long button labels (Spanish) wrap onto two lines, arrow held at the far right */
+  .btn--line { max-width: 100%; height: auto; min-height: 48px; padding: 13px 22px; white-space: normal; text-align: left; line-height: 1.35; justify-content: space-between; gap: 16px; }
+  .btn--line .arrow { flex: none; }
+  .fee__foot .btn { width: 100%; }
 }
 
