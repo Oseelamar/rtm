@@ -388,7 +388,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
   .hero { height: 290vh; }
   .hero__bg img { object-position: 50% 50%; }
   .hero__shade { background: linear-gradient(0deg, rgba(10,9,8,.92) 0%, rgba(10,9,8,.6) 42%, rgba(10,9,8,0) 70%); }
-  .hero__copy { justify-content: flex-end; padding: 0 0 112px; left: 20px; right: 20px; }
+  .hero__copy { justify-content: flex-end; padding: 0 0 68px; left: 20px; right: 20px; }
   .hero__eyebrow { margin-bottom: 18px; }
   .hero__title { font-size: clamp(44px, 13vw, 64px); }
   .hero__foot { margin-top: 22px; gap: 18px; }
@@ -403,6 +403,8 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
   .proof__item { padding: 24px 14px 26px 0; }
   .proof__item + .proof__item { padding-left: 14px; }
   .proof__item:nth-child(3) { padding-left: 0; }
+  .proof__item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .proof__item:nth-child(n+3) { padding-top: 26px; }
   .proof__sm { font-size: 13.5px; }
   .proof__press { margin-top: 50px; gap: 18px; }
   /* one moving line of logos */
