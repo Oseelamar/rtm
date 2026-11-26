@@ -12,17 +12,38 @@
 
   $$('[data-year]').forEach(n => n.textContent = new Date().getFullYear());
 
-  /* press logos: a second copy so the phone marquee loops seamlessly */
+  /* press logos on phones: an endless strip.
+     A second copy of the logos follows the first. The script measures exactly where that copy starts
+     (iPhone Safari measured the old CSS "-50%" differently, leaving an empty gap) and wraps there,
+     moving a fixed number of pixels per second. Still and swipeable when Reduce Motion is on. */
   const press = $('[data-press]');
-  if (press) [...press.children].forEach(li => {
-    const c = li.cloneNode(true);
-    c.classList.add('is-dup');
-    c.setAttribute('aria-hidden', 'true');
-    c.querySelector('img').alt = '';
-    press.appendChild(c);
-  });
-  // only animate the strip while it is on screen (saves battery, avoids background compositing)
-  if (press) new IntersectionObserver(([e]) => press.classList.toggle('is-paused', !e.isIntersecting)).observe(press.parentElement);
+  if (press) {
+    const originals = [...press.children];
+    originals.forEach(li => {
+      const c = li.cloneNode(true);
+      c.classList.add('is-dup');
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelector('img').alt = '';
+      press.appendChild(c);
+    });
+    const SPEED = 12; // pixels per second: one logo about every 9 seconds
+    let setW = 0, x = 0, last = 0, onScreen = false, raf = 0;
+    const active = () => mqPhone.matches && !reduce;
+    const measure = () => { setW = press.children[originals.length].offsetLeft - press.children[0].offsetLeft; };
+    const step = t => {
+      raf = 0;
+      if (!onScreen || !active() || setW <= 0) { last = 0; return; }
+      const dt = last ? Math.min(t - last, 64) : 0; // a long pause (tab switch) never causes a jump
+      last = t;
+      x = (x + dt * SPEED / 1000) % setW;
+      press.style.transform = `translate3d(${-x.toFixed(2)}px,0,0)`;
+      raf = requestAnimationFrame(step);
+    };
+    const go = () => { if (!raf && onScreen && active()) { measure(); last = 0; raf = requestAnimationFrame(step); } };
+    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; go(); }).observe(press.parentElement);
+    mqPhone.addEventListener('change', () => { if (active()) { x = 0; go(); } else press.style.transform = ''; });
+    addEventListener('resize', () => { if (active()) measure(); });
+  }
 
   /* ---------- practice areas: one tap answers in place ---------- */
   const practice = $('[data-practice]');
