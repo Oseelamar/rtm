@@ -649,7 +649,7 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
   .fcard { padding: 18px 20px 20px; gap: 2px; }
   .fcard b { font-size: 60px; }
   .fcard__t { margin-top: 4px; }
-  .fcard__d { font-size: 14.5px; margin-top: 6px; }
+  .fcard__d { font-size: 14.5px; margin-top: 12px; }
   .fee__foot { margin-top: 26px; }
 }
 
