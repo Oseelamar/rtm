@@ -1,13 +1,20 @@
 @font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "PS Times";
-  src: url("fonts/PSTimes-Regular.ttf") format("truetype");
+  src: url("fonts/ps-times.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Season Sans";
-  src: url("fonts/SeasonSans-Bold.woff2") format("woff2");
+  src: url("fonts/season-sans-bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -197,7 +204,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 
 .hero__reveal { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden; visibility: hidden; border-radius: 8px; will-change: left, top, width, height; }
 .hero__reveal.is-on { visibility: visible; }
-.hero__reveal > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero__reveal > picture > img, .hero__reveal > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 .hero__reveal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,9,8,.78) 0%, rgba(10,9,8,.2) 60%, rgba(10,9,8,0) 100%); opacity: var(--shade, 0); }
 .hero__reveal-copy { position: absolute; left: var(--pad); bottom: 12vh; z-index: 2; max-width: 760px; width: calc(100vw - var(--pad) * 2); }
 .hero__reveal-copy .label { opacity: 0; transition: opacity .9s var(--ease); margin-bottom: 22px; }
@@ -636,7 +643,7 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
 @media (max-width: 760px) {
   .fee { position: relative; overflow: hidden; padding: 0 0 90px; }
   /* a soft, blurred wash of the painting behind the copy and cards, so the glass has colour to show */
-  .fee::before { content: ""; position: absolute; left: -10%; right: -10%; top: 80vw; bottom: -10%; z-index: 0; background: url("img/fee-bg.jpg") 72% 60% / cover no-repeat; filter: blur(42px) brightness(.42) saturate(1.25); -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%); mask-image: linear-gradient(180deg, transparent 0, #000 22%); }
+  .fee::before { content: ""; position: absolute; left: -10%; right: -10%; top: 80vw; bottom: -10%; z-index: 0; background: url("img/opt/fee-bg-1536.jpg") 72% 60% / cover no-repeat; background-image: image-set(url("img/opt/fee-bg-960.avif") type("image/avif"), url("img/opt/fee-bg-1536.jpg") type("image/jpeg")); filter: blur(42px) brightness(.42) saturate(1.25); -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%); mask-image: linear-gradient(180deg, transparent 0, #000 22%); }
   .fee > * { position: relative; z-index: 1; }
   .fee__stage { display: block; min-height: 0; }
   .fee__bg { position: relative; height: 104vw; -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%); mask-image: linear-gradient(180deg, #000 62%, transparent 100%); }
@@ -652,4 +659,9 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
   .fcard__d { font-size: 14.5px; margin-top: 12px; }
   .fee__foot { margin-top: 26px; }
 }
+
+/* ---------- performance ---------- */
+.hero__bg picture, .hero__reveal picture, .fee__bg picture, .advocacy__art picture, .ft__art picture, .chip picture { display: contents; }
+/* sections far below the fold skip layout and paint until they come near */
+.process, .advocacy, .t1, .faq, .contact, .locations { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 

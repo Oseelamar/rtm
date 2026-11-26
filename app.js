@@ -228,7 +228,7 @@
         document.body.classList.add('is-ready');
         setTimeout(() => $('.hero__title').classList.add('is-in'), 350);
         setTimeout(() => intro.classList.add('is-gone'), 1600);
-      }, 900);
+      }, 380);
     }
     measureChip();
     if (qs.has('y')) scrollTo(0, +qs.get('y'));
@@ -237,5 +237,5 @@
 
   const heroReady = new Promise(r => { const i = bgImg; if (i.complete) r(); else { i.onload = r; i.onerror = r; } });
   const ready = Promise.all([document.fonts.ready, heroReady]);
-  Promise.race([ready, new Promise(r => setTimeout(r, 3000))]).then(start);
+  Promise.race([ready, new Promise(r => setTimeout(r, 1200))]).then(start);
 })();

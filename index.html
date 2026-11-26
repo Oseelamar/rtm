@@ -7,12 +7,12 @@
 <meta name="description" content="Hurt in California? RTM Law fights for injured people and their families. No fee unless we win. Available 24/7. Hablamos Español.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0a0908">
-<link rel="preload" href="fonts/PSTimes-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/SeasonSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" href="img/hero.jpg" as="image" media="(min-width: 761px)">
-<link rel="preload" href="img/hero-m.jpg" as="image" media="(max-width: 760px)">
+<link rel="icon" href="img/logo.png" type="image/png">
+<link rel="preload" href="fonts/ps-times.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/season-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" media="(min-width: 761px)" imagesrcset="img/opt/hero-960.avif 960w, img/opt/hero-1536.avif 1536w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" media="(max-width: 760px)" imagesrcset="img/opt/hero-m-600.avif 600w, img/opt/hero-m-864.avif 864w" imagesizes="100vw">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -67,8 +67,10 @@
   <div class="hero__stage">
     <div class="hero__bg">
       <picture>
-        <source media="(max-width: 760px)" srcset="img/hero-m.jpg">
-        <img src="img/hero.jpg" alt="A marble statue of Lady Justice, blindfolded, holding scales beside a Corinthian column">
+        <source media="(max-width: 760px)" type="image/avif" srcset="img/opt/hero-m-600.avif 600w, img/opt/hero-m-864.avif 864w" sizes="100vw">
+        <source media="(max-width: 760px)" srcset="img/opt/hero-m-864.jpg">
+        <source type="image/avif" srcset="img/opt/hero-960.avif 960w, img/opt/hero-1536.avif 1536w" sizes="100vw">
+        <img src="img/opt/hero-1536.jpg" width="1536" height="864" fetchpriority="high" decoding="async" alt="A marble statue of Lady Justice, blindfolded, holding scales beside a Corinthian column">
       </picture>
     </div>
     <div class="hero__shade"></div>
@@ -77,7 +79,7 @@
       <p class="label hero__eyebrow"><span class="rule"></span>California personal injury attorneys</p>
       <h1 class="hero__title">
         <span class="hl" data-l="0"><span class="hl__i">Hurt in California?</span></span>
-        <span class="hl hl--split" data-l="1"><span class="hl__i"><span class="w-left">We</span><span class="chip" data-chip><img src="img/face.jpg" alt=""></span><span class="w-right">take it</span></span></span>
+        <span class="hl hl--split" data-l="1"><span class="hl__i"><span class="w-left">We</span><span class="chip" data-chip><picture><source type="image/avif" srcset="img/opt/face-416.avif"><img src="img/opt/face-1536.jpg" width="416" height="234" decoding="async" alt=""></picture></span><span class="w-right">take it</span></span></span>
         <span class="hl" data-l="2"><span class="hl__i">from here.</span></span>
       </h1>
       <div class="hero__foot">
@@ -93,7 +95,7 @@
 
     <!-- The chip grows into this full-screen frame -->
     <div class="hero__reveal" data-reveal>
-      <img src="img/face.jpg" alt="Close-up of the blindfolded face of Lady Justice">
+      <picture><source type="image/avif" srcset="img/opt/face-768.avif 768w, img/opt/face-1536.avif 1536w" sizes="100vw"><img src="img/opt/face-1536.jpg" width="1536" height="864" loading="lazy" decoding="async" alt="Close-up of the blindfolded face of Lady Justice"></picture>
       <div class="hero__reveal-copy">
         <p class="label">Our promise</p>
         <p class="hero__reveal-title"><span class="hl"><span class="hl__i">You’re not just</span></span><span class="hl"><span class="hl__i">a case to us.</span></span></p>
@@ -128,13 +130,13 @@
       <span class="label">Featured on</span>
       <div class="press-rail">
       <ul class="press" data-press>
-        <li><img src="img/press/fox.svg" alt="FOX" loading="lazy"></li>
-        <li><img src="img/press/nbc.svg" alt="NBC" loading="lazy"></li>
-        <li><img src="img/press/ap.svg" alt="Associated Press" loading="lazy"></li>
-        <li><img src="img/press/kget.svg" alt="KGET 17" loading="lazy"></li>
-        <li><img src="img/press/ktla.svg" alt="KTLA 5" loading="lazy"></li>
-        <li><img src="img/press/abc.svg" alt="ABC News" loading="lazy"></li>
-        <li><img src="img/press/cbs.svg" alt="CBS" loading="lazy"></li>
+        <li><img src="img/press/fox.svg" alt="FOX" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/nbc.svg" alt="NBC" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/ap.svg" alt="Associated Press" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/kget.svg" alt="KGET 17" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/ktla.svg" alt="KTLA 5" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/abc.svg" alt="ABC News" loading="lazy" decoding="async"></li>
+        <li><img src="img/press/cbs.svg" alt="CBS" loading="lazy" decoding="async"></li>
       </ul>
       </div>
     </div>
@@ -255,7 +257,7 @@
 <!-- ============ NO FEE (full-bleed painting, cards over its edge) ============ -->
 <section class="fee">
   <div class="fee__stage">
-    <div class="fee__bg"><img src="img/fee-bg.jpg" alt="A marble hand holding gilded balance scales" loading="lazy"></div>
+    <div class="fee__bg"><picture><source type="image/avif" srcset="img/opt/fee-bg-960.avif 960w, img/opt/fee-bg-1536.avif 1536w" sizes="100vw"><img src="img/opt/fee-bg-1536.jpg" width="1536" height="864" loading="lazy" decoding="async" alt="A marble hand holding gilded balance scales"></picture></div>
     <div class="fee__shade"></div>
     <div class="wrap fee__in">
       <div class="fee__copy">
@@ -303,7 +305,7 @@
 <!-- ============ ADVOCACY ============ -->
 <section class="advocacy">
   <div class="wrap advocacy__grid">
-    <div class="advocacy__art rv-img"><img src="img/hands.jpg" alt="Two marble hands clasped in support" loading="lazy"></div>
+    <div class="advocacy__art rv-img"><picture><source type="image/avif" srcset="img/opt/hands-800.avif 800w, img/opt/hands-1216.avif 1216w" sizes="(max-width: 760px) 100vw, 45vw"><img src="img/opt/hands-1216.jpg" width="1216" height="684" loading="lazy" decoding="async" alt="Two marble hands clasped in support"></picture></div>
     <div class="advocacy__copy">
       <p class="label rv"><span class="rule"></span>Neurodivergent advocacy</p>
       <h2 class="h2 split">Injury lawyers for people with autism and special needs.</h2>
@@ -402,7 +404,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div class="ft__art">
-    <img src="img/footer.jpg" alt="A Renaissance courthouse colonnade lit at night" loading="lazy">
+    <picture><source type="image/avif" srcset="img/opt/footer-966.avif 966w, img/opt/footer-1792.avif 1792w" sizes="100vw"><img src="img/opt/footer-1792.jpg" width="1792" height="768" loading="lazy" decoding="async" alt="A Renaissance courthouse colonnade lit at night"></picture>
   </div>
   <div class="ft__big wrap">
     <p class="label"><span class="rule"></span>Talk with us tonight</p>
@@ -451,7 +453,7 @@
   <a href="#contact">Case review</a>
 </nav>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
 <script src="i18n.js" defer></script>
 <script src="app.js" defer></script>
 </body>
