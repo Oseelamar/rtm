@@ -21,6 +21,8 @@
     c.querySelector('img').alt = '';
     press.appendChild(c);
   });
+  // only animate the strip while it is on screen (saves battery, avoids background compositing)
+  if (press) new IntersectionObserver(([e]) => press.classList.toggle('is-paused', !e.isIntersecting)).observe(press.parentElement);
 
   /* ---------- practice areas: one tap answers in place ---------- */
   const practice = $('[data-practice]');

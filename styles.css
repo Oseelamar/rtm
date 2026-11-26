@@ -229,7 +229,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 .press li { aspect-ratio: 1; display: grid; place-items: center; background: #141518; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(236,230,218,.08); }
 .press img { width: 56%; height: 38%; object-fit: contain; }
 .press li.is-dup { display: none; }
-@keyframes press-run { to { transform: translateX(-50%); } }
+@keyframes press-run { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
 
 /* ---------- people ---------- */
 .people { position: relative; height: 340vh; }
@@ -408,8 +408,12 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
   .proof__sm { font-size: 13.5px; }
   .proof__press { margin-top: 50px; gap: 18px; }
   /* one moving line of logos */
-  .press-rail { margin: 0 -20px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-  .press { display: flex; gap: 10px; width: max-content; padding-left: 10px; animation: press-run 32s linear infinite; }
+  .press-rail { position: relative; margin: 0 -20px; overflow: hidden; }
+  .press-rail::before, .press-rail::after { content: ""; position: absolute; top: 0; bottom: 0; width: 14%; z-index: 1; pointer-events: none; }
+  .press-rail::before { left: 0; background: linear-gradient(90deg, var(--ink), rgba(10,9,8,0)); }
+  .press-rail::after { right: 0; background: linear-gradient(270deg, var(--ink), rgba(10,9,8,0)); }
+  .press { display: flex; gap: 10px; width: max-content; padding-left: 10px; animation: press-run 32s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .press.is-paused { animation-play-state: paused; }
   .press li { flex: 0 0 96px; }
   .press li.is-dup { display: grid; }
 
@@ -709,5 +713,15 @@ body.menu-open .menu__side { opacity: 1; transform: none; transition: opacity .9
   .btn--line { max-width: 100%; height: auto; min-height: 48px; padding: 13px 22px; white-space: normal; text-align: left; line-height: 1.35; justify-content: space-between; gap: 16px; }
   .btn--line .arrow { flex: none; }
   .fee__foot .btn { width: 100%; }
+}
+
+/* Reduce Motion: the global rule above squeezes animations to .01ms, which made the logo strip
+   jump between positions. With Reduce Motion the strip stands still and can be swiped instead. */
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .press { animation: none !important; transform: none; padding-right: 20px; }
+  .press-rail { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .press-rail::-webkit-scrollbar { display: none; }
+  .press li { scroll-snap-align: start; }
+  .press li.is-dup { display: none; }
 }
 
