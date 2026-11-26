@@ -588,3 +588,29 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
 }
 
 .practice .wrap > .label { margin-bottom: 0; }
+
+/* ---------- the $0 promise: one small recurring mark ---------- */
+.zero { display: inline-flex; align-items: center; gap: 12px; margin: 0; font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--bone-2); line-height: 1.4; }
+.zero b { display: grid; place-items: center; flex: none; height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--red); color: var(--bone); font: 400 16px/1 var(--serif); letter-spacing: 0; text-transform: none; }
+.hero__ctas { align-items: center; }
+.hero__ctas .zero { flex-basis: 100%; margin-top: 6px; }
+.practice .zero { margin-top: 8px; justify-content: center; }
+.zero--results { margin: 0 0 30px; }
+.ft__big .zero { justify-content: center; }
+.form__free { margin-top: -8px; text-align: center; color: var(--grey); font-size: 14px; }
+
+/* no-fee steps */
+.fee__steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.fee__steps li { display: grid; grid-template-columns: minmax(150px, .8fr) 1.2fr; gap: 8px 28px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.fee__steps b { font: 400 clamp(24px, 2vw, 32px)/1.1 var(--serif); letter-spacing: -.01em; color: var(--bone); }
+.fee__steps span { color: var(--bone-2); }
+.fee__steps li:nth-child(2) { transition-delay: .08s; }
+.fee__steps li:nth-child(3) { transition-delay: .16s; }
+.fee__costs { color: var(--grey) !important; font-size: 14.5px; }
+@media (max-width: 760px) {
+  .zero { gap: 10px; font-size: 11px; }
+  .zero b { height: 26px; font-size: 15px; }
+  .fee__steps li { grid-template-columns: 1fr; padding: 18px 0; }
+  .ft__big .zero { flex-wrap: wrap; justify-content: center; text-align: center; }
+}
+

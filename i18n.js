@@ -84,6 +84,18 @@
     'Choose the one closest to what happened. You’ll see right away how we can help.': 'Elija la opción más parecida a lo que le pasó. Verá de inmediato cómo podemos ayudarle.',
     'We can help.': 'Podemos ayudarle.',
     'Get a free case review': 'Solicite una evaluación gratuita',
+    'to start, and nothing unless we win': 'para empezar, y nada si no ganamos',
+    'to find out · No fee unless we win': 'para averiguarlo · No cobramos si no ganamos',
+    'owed unless we recover money for you': 'si no recuperamos dinero para usted',
+    'for the call · No fee unless we win': 'por la llamada · No cobramos si no ganamos',
+    '$0 to start': '$0 para empezar',
+    'The first call and your case review are free.': 'La primera llamada y la evaluación de su caso son gratuitas.',
+    '$0 while we work': '$0 mientras trabajamos',
+    'No bills and no hourly fees while your case moves forward.': 'Sin facturas ni cobros por hora mientras avanza su caso.',
+    'A fee only if we win': 'Honorarios solo si ganamos',
+    'Our fee is a share of what we recover for you. If we don’t win, you owe us no fee.': 'Nuestros honorarios son una parte de lo que recuperamos para usted. Si no ganamos, no nos debe honorarios.',
+    'Case costs, such as filing fees or medical records, are separate from our fee. We explain exactly how they’re handled before you sign anything.': 'Los costos del caso, como tarifas judiciales o expedientes médicos, son aparte de nuestros honorarios. Le explicamos exactamente cómo se manejan antes de que firme cualquier cosa.',
+    'It costs nothing to ask.': 'Preguntar no cuesta nada.',
 
     // results
     'Global settlement · Trucking accident': 'Acuerdo global · Accidente de camión',
