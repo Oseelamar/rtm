@@ -84,7 +84,6 @@
     'Choose the one closest to what happened. You’ll see right away how we can help.': 'Elija la opción más parecida a lo que le pasó. Verá de inmediato cómo podemos ayudarle.',
     'We can help.': 'Podemos ayudarle.',
     'Get a free case review': 'Solicite una evaluación gratuita',
-    'to start, and nothing unless we win': 'para empezar, y nada si no ganamos',
     'to find out · No fee unless we win': 'para averiguarlo · No cobramos si no ganamos',
     'owed unless we recover money for you': 'si no recuperamos dinero para usted',
     'for the call · No fee unless we win': 'por la llamada · No cobramos si no ganamos',

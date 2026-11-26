@@ -592,8 +592,6 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
 /* ---------- the $0 promise: one small recurring mark ---------- */
 .zero { display: inline-flex; align-items: center; gap: 12px; margin: 0; font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--bone-2); line-height: 1.4; }
 .zero b { display: grid; place-items: center; flex: none; height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--red); color: var(--bone); font: 400 16px/1 var(--serif); letter-spacing: 0; text-transform: none; }
-.hero__ctas { align-items: center; }
-.hero__ctas .zero { flex-basis: 100%; margin-top: 6px; }
 .practice .zero { margin-top: 8px; justify-content: center; }
 .zero--results { margin: 0 0 30px; }
 .ft__big .zero { justify-content: center; }
