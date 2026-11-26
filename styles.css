@@ -556,3 +556,35 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
   html[lang="es"] .hero__title { font-size: clamp(36px, 10vw, 52px); }
   html[lang="es"] .pw__row a { font-size: clamp(30px, 9.2vw, 48px); }
 }
+
+/* ---------- practice areas: tap what happened (centred) ---------- */
+.practice { padding: 140px 0; border-top: 1px solid var(--line); }
+.practice .wrap { display: grid; justify-items: center; text-align: center; }
+.practice__h { margin: 24px 0 44px; }
+.practice .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1040px; }
+.practice .pills button { padding: 16px 22px; border-radius: 999px; border: 1px solid rgba(236,230,218,.22); font: 400 17px/1.2 var(--sans); color: var(--bone-2); transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease); }
+.practice .pills button.is-on { background: var(--bone); color: var(--ink); border-color: var(--bone); }
+@media (hover: hover) { .practice .pills button:not(.is-on):hover { border-color: var(--bone); color: var(--bone); } }
+.practice .p5__ans { width: 100%; max-width: 720px; margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line); min-height: 220px; }
+.practice .p5__idle { color: var(--grey); font-size: 16px; }
+.practice .p5__res { display: grid; justify-items: center; gap: 14px; animation: practiceIn .6s var(--ease); }
+.practice .p5__res[hidden] { display: none; }
+.practice .p5__sel { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red); }
+.practice .p5__yes { display: flex; align-items: center; justify-content: center; gap: 16px; font: 400 clamp(36px, 3.4vw, 56px)/1.05 var(--serif); letter-spacing: -.02em; }
+.practice .p5__tick { display: grid; place-items: center; flex: none; width: .9em; height: .9em; border-radius: 50%; background: var(--red); color: #fff; font: 600 .42em/1 var(--sans); }
+.practice .p5__d { color: var(--bone-2); font-size: 17px; line-height: 1.6; max-width: 540px; }
+.practice .p5__link { display: inline-flex; align-items: center; gap: 10px; margin-top: 4px; padding-bottom: 6px; font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; }
+.practice .p5__link .arrow { transition: transform .5s var(--ease); }
+.practice .p5__link:hover .arrow { transform: translateX(4px); }
+@keyframes practiceIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .practice { padding: 90px 0; }
+  .practice__h { margin: 20px 0 28px; }
+  .practice .pills { gap: 8px; }
+  .practice .pills button { padding: 13px 16px; font-size: 15px; }
+  .practice .p5__ans { margin-top: 30px; padding-top: 26px; min-height: 0; }
+  .practice .p5__yes { font-size: 34px; }
+  .practice .p5__d { font-size: 15px; }
+}
+
+.practice .wrap > .label { margin-bottom: 0; }

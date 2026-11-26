@@ -22,6 +22,29 @@
     press.appendChild(c);
   });
 
+  /* ---------- practice areas: one tap answers in place ---------- */
+  const practice = $('[data-practice]');
+  if (practice) {
+    const pills = $$('.pills button', practice);
+    const idle = $('[data-idle]', practice), res = $('[data-res]', practice);
+    const sel = $('[data-sel]', practice), d2 = $('[data-d2]', practice);
+    let picked = null;
+    const fill = () => {
+      if (!picked) return;
+      sel.textContent = picked.textContent;
+      d2.textContent = document.documentElement.lang === 'es' ? picked.dataset.esD : picked.dataset.d;
+    };
+    pills.forEach(b => b.addEventListener('click', () => {
+      picked = b;
+      pills.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+      idle.hidden = true;
+      res.hidden = false;
+      fill();
+      res.style.animation = 'none'; void res.offsetWidth; res.style.animation = '';
+    }));
+    document.addEventListener('rtm:lang', fill);
+  }
+
   /* ---------- split headings into masked lines ---------- */
   const splitEls = $$('.split');
   splitEls.forEach(el => { el.dataset.src = el.textContent.trim(); });
