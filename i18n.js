@@ -95,6 +95,15 @@
     'Our fee is a share of what we recover for you. If we don’t win, you owe us no fee.': 'Nuestros honorarios son una parte de lo que recuperamos para usted. Si no ganamos, no nos debe honorarios.',
     'Case costs, such as filing fees or medical records, are separate from our fee. We explain exactly how they’re handled before you sign anything.': 'Los costos del caso, como tarifas judiciales o expedientes médicos, son aparte de nuestros honorarios. Le explicamos exactamente cómo se manejan antes de que firme cualquier cosa.',
     'It costs nothing to ask.': 'Preguntar no cuesta nada.',
+    'Free consultation': 'Consulta gratuita',
+    'No hourly fees': 'Sin cobros por hora',
+    'Hablamos Español': 'Atención en español',
+    'to start': 'para empezar',
+    'while we work': 'mientras trabajamos',
+    'No fee': 'Nada',
+    'unless we win': 'si no ganamos',
+    'A marble hand holding gilded balance scales': 'Una mano de mármol que sostiene una balanza dorada',
+    'Two marble hands clasped in support': 'Dos manos de mármol entrelazadas en señal de apoyo',
 
     // results
     'Global settlement · Trucking accident': 'Acuerdo global · Accidente de camión',

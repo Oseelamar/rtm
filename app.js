@@ -71,7 +71,19 @@
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
-  const watch = () => $$('.rv, .rv-img, .split, .pw__row, .ft__call .hl').forEach(n => io.observe(n));
+  // Masked images (.rv-img) start fully clipped, and Chrome reports a fully clipped element as
+  // never intersecting, so watch their parent and reveal the image from there.
+  const ioImg = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      [...e.target.children].filter(n => n.classList.contains('rv-img')).forEach(n => n.classList.add('is-in'));
+      ioImg.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
+  const watch = () => {
+    $$('.rv, .split, .pw__row, .ft__call .hl').forEach(n => io.observe(n));
+    $$('.rv-img').forEach(n => ioImg.observe(n.parentElement));
+  };
 
   /* ---------- smooth scroll ---------- */
   let lenis = null;

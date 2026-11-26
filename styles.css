@@ -270,7 +270,7 @@ body.is-ready .hero__foot { opacity: 1; transform: none; }
 .pw__cta p { font-size: clamp(22px, 2vw, 30px); max-width: 520px; color: var(--bone-2); }
 
 /* ---------- fee ---------- */
-.fee { padding: 150px 0; border-top: 1px solid var(--line); }
+
 .fee__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 130px); align-items: center; }
 .fee__art { border-radius: 4px; }
 .fee__art img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
@@ -610,5 +610,41 @@ html[lang="es"] .pw__row a { font-size: clamp(42px, 7.2vw, 130px); }
   .zero b { height: 26px; font-size: 15px; }
   .fee__steps li { grid-template-columns: 1fr; padding: 18px 0; }
   .ft__big .zero { flex-wrap: wrap; justify-content: center; text-align: center; }
+}
+
+/* ---------- no win, no fee: full-bleed painting, cards over its lower edge ---------- */
+.fee { padding: 0 0 140px; border-top: 1px solid var(--line); }
+.fee__stage { position: relative; min-height: min(92vh, 900px); display: flex; align-items: center; overflow: hidden; }
+.fee__bg { position: absolute; inset: 0; }
+.fee__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; }
+.fee__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(6,10,30,.55) 0%, rgba(6,10,30,.15) 50%, rgba(6,10,30,0) 70%), linear-gradient(0deg, var(--ink) 0%, rgba(10,9,8,0) 26%); }
+.fee__in { position: relative; z-index: 1; width: 100%; padding-top: 140px; padding-bottom: 200px; }
+.fee .fee__copy { display: grid; gap: 26px; max-width: 600px; }
+.fee__lede { color: rgba(236,230,218,.86); font-size: 18px; line-height: 1.6; max-width: 520px; }
+.fee__tags { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.fee__tags li { padding: 11px 18px; border-radius: 999px; border: 1px solid rgba(236,230,218,.4); color: var(--bone); font-size: 15px; background: rgba(6,10,30,.18); }
+.fee__cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -150px; }
+.fcard { display: grid; align-content: start; gap: 6px; padding: 34px 34px 38px; background: var(--bone); color: var(--ink); border-radius: 8px; min-height: 250px; }
+.fcard b { font: 400 clamp(64px, 6vw, 108px)/.95 var(--serif); letter-spacing: -.04em; }
+.fcard__t { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red-d); margin-top: 6px; }
+.fcard__d { color: #4a4640; font-size: 15.5px; line-height: 1.55; margin-top: 14px; max-width: 340px; }
+.fcard:nth-child(2) { transition-delay: .08s; }
+.fcard:nth-child(3) { transition-delay: .16s; }
+.fee__foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 34px; flex-wrap: wrap; }
+.fee__foot .fee__costs { max-width: 620px; color: var(--grey); font-size: 14.5px; }
+.advocacy__art img { object-position: 80% 50%; }
+@media (max-width: 760px) {
+  .fee { padding: 0 0 90px; }
+  .fee__stage { display: block; min-height: 0; }
+  .fee__bg { position: relative; height: 78vw; }
+  .fee__bg img { object-position: 78% 40%; }
+  .fee__shade { background: linear-gradient(0deg, var(--ink) 0%, rgba(10,9,8,0) 40%); height: 78vw; }
+  .fee__in { padding-top: 0; padding-bottom: 0; margin-top: -40px; }
+  .fee__lede { font-size: 15.5px; }
+  .fee__tags li { font-size: 13.5px; padding: 9px 14px; }
+  .fee__cards { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+  .fcard { min-height: 0; padding: 26px 24px 28px; }
+  .fcard b { font-size: 64px; }
+  .fee__foot { margin-top: 26px; }
 }
 
