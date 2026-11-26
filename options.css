@@ -16,7 +16,7 @@
 }
 .picker a { display: grid; place-items: center; height: 34px; min-width: 34px; padding: 0 10px; border-radius: 999px; color: var(--bone-2); transition: background .4s var(--ease), color .4s var(--ease); }
 .picker a:hover, .picker a.is-on { background: var(--bone); color: var(--ink); }
-.picker__home { padding: 0 14px !important; }
+.picker__home { padding: 0 14px !important; white-space: nowrap; }
 .picker__group { display: flex; align-items: center; gap: 2px; padding-left: 10px; border-left: 1px solid var(--line); }
 .picker__group span { color: var(--grey); padding: 0 8px 0 4px; }
 
@@ -336,4 +336,83 @@
   .plates--sm { grid-template-columns: 1fr 1fr; }
   .plates--sm .plate { padding: 20px 18px; }
   .plates--sm .plate__t { font-size: 19px; }
+}
+
+/* =========================================================
+   PRACTICE 05 — tap what happened
+   ========================================================= */
+.p5, .p6, .p7 { padding: 90px 0 130px; }
+.p5 { background: var(--ink-2); }
+.p5__h, .p7__h { margin: 24px 0 44px; }
+.pills { display: flex; flex-wrap: wrap; gap: 10px; max-width: 1100px; }
+.pills button { padding: 16px 22px; border-radius: 999px; border: 1px solid rgba(236,230,218,.22); font: 400 17px/1.2 var(--sans); color: var(--bone-2); transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease); }
+.pills button:hover { border-color: var(--bone); color: var(--bone); }
+.pills button.is-on { background: var(--bone); color: var(--ink); border-color: var(--bone); }
+.p5__ans { margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--line); min-height: 210px; max-width: 760px; }
+.p5__idle { color: var(--grey); font-size: 16px; }
+.p5__res { display: grid; gap: 14px; animation: swap .6s var(--ease); }
+.p5__res[hidden] { display: none; }
+.p5__sel { font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--red); }
+.p5__yes { display: flex; align-items: center; gap: 16px; font: 400 clamp(36px, 3.4vw, 56px)/1.05 var(--serif); letter-spacing: -.02em; }
+.p5__tick { display: grid; place-items: center; flex: none; width: .9em; height: .9em; border-radius: 50%; background: var(--red); color: #fff; font: 600 .42em/1 var(--sans); }
+.p5__d { color: var(--bone-2); font-size: 17px; line-height: 1.6; max-width: 560px; }
+.p5__link { display: inline-flex; align-items: center; gap: 10px; justify-self: start; margin-top: 4px; padding-bottom: 6px; font: var(--ui); letter-spacing: var(--ui-track); text-transform: uppercase; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; }
+.p5__link .arrow { transition: transform .5s var(--ease); }
+.p5__link:hover .arrow { transform: translateX(4px); }
+
+/* =========================================================
+   PRACTICE 06 — grouped by where it happened
+   ========================================================= */
+.groups { display: grid; grid-template-columns: 1.15fr 1fr 1fr; border-top: 1px solid rgba(236,230,218,.3); }
+.grp { padding: 30px 34px 0 0; }
+.grp + .grp { padding-left: 34px; border-left: 1px solid var(--line); }
+.grp:nth-child(2) { transition-delay: .08s; }
+.grp:nth-child(3) { transition-delay: .16s; }
+.grp__h { display: flex; align-items: baseline; gap: 14px; margin: 0 0 18px; font: 400 clamp(28px, 2.4vw, 40px)/1.1 var(--serif); letter-spacing: -.015em; }
+.grp__h span { font: var(--ui); letter-spacing: var(--ui-track); color: var(--red); }
+.grp ul { list-style: none; margin: 0; padding: 0; }
+.grp a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--line); font: 400 17px/1.3 var(--sans); color: var(--bone-2); transition: color .4s var(--ease), padding .5s var(--ease); }
+.grp a i { font-style: normal; opacity: .35; transition: opacity .4s, transform .5s var(--ease); }
+.grp a:hover { color: var(--bone); padding-left: 8px; }
+.grp a:hover i { opacity: 1; transform: translateX(3px); }
+.grp__note { margin-top: 26px; color: var(--grey); font-size: 15px; }
+.grp__note a, .own__foot a { display: inline; padding: 0; border: 0; color: var(--bone); font: inherit; }
+
+/* =========================================================
+   PRACTICE 07 — in your own words
+   ========================================================= */
+.p7 { background: var(--ink-2); }
+.own { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; border-top: 1px solid rgba(236,230,218,.3); }
+.own a { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); transition: padding .5s var(--ease); }
+.own span { font: 400 clamp(24px, 2vw, 32px)/1.2 var(--serif); letter-spacing: -.01em; color: var(--bone-2); transition: color .4s; }
+.own i { flex: none; font: var(--ui); font-style: normal; letter-spacing: var(--ui-track); text-transform: uppercase; color: var(--grey); transition: color .4s; }
+.own a:hover { padding-left: 10px; }
+.own a:hover span { color: var(--bone); }
+.own a:hover i { color: var(--red); }
+.own__foot { margin-top: 34px; color: var(--grey); font-size: 16px; }
+
+@media (max-width: 760px) {
+  .p5, .p6, .p7 { padding: 60px 0 90px; }
+  .p5__h, .p7__h { margin: 20px 0 28px; }
+  .pills { gap: 8px; }
+  .pills button { padding: 13px 16px; font-size: 15px; }
+  .p5__ans { margin-top: 28px; padding-top: 26px; min-height: 0; }
+  .p5__yes { font-size: 34px; }
+  .p5__d { font-size: 15px; }
+  .groups { grid-template-columns: 1fr; }
+  .grp, .grp + .grp { padding: 28px 0 8px; border-left: 0; }
+  .grp + .grp { border-top: 1px solid var(--line); }
+  .grp a { font-size: 16px; padding: 14px 0; }
+  .own { grid-template-columns: 1fr; }
+  .own a { flex-direction: column; gap: 8px; padding: 18px 0; }
+  .own a:hover { padding-left: 0; }
+  .own span { font-size: 23px; }
+}
+
+/* touch screens: no sticky hover states on the practice lists */
+@media (hover: none) {
+  .grp a:hover { padding-left: 0; color: var(--bone-2); }
+  .grp a:hover i { opacity: .35; transform: none; }
+  .own a:hover span { color: var(--bone-2); }
+  .own a:hover i { color: var(--grey); }
 }

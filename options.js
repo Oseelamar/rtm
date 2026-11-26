@@ -9,6 +9,22 @@
   }), { rootMargin: '0px 0px -10% 0px', threshold: .01 });
   $$('.rv, [data-bars], .pw__row').forEach(n => FLAT ? n.classList.add('is-in') : io.observe(n));
 
+  /* practice 05: one tap answers in place, right under the buttons */
+  const p5 = $('[data-p5]');
+  if (p5) {
+    const pills = $$('.pills button', p5);
+    const idle = $('[data-idle]', p5), res = $('[data-res]', p5);
+    const sel = $('[data-sel]', p5), d2 = $('[data-d2]', p5);
+    pills.forEach(b => b.addEventListener('click', () => {
+      pills.forEach(x => x.classList.toggle('is-on', x === b));
+      idle.hidden = true;
+      sel.textContent = b.textContent;
+      d2.textContent = b.dataset.d;
+      res.hidden = false;
+      res.style.animation = 'none'; void res.offsetWidth; res.style.animation = '';
+    }));
+  }
+
   /* practice 03: pointing at an area fills the detail panel */
   const p3 = $('[data-p3]');
   if (p3) {
